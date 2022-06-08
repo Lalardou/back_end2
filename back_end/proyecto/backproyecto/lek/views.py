@@ -31,6 +31,12 @@ def componentes (request):
                   "fotocomponente4" : "/static/lek/img/componentes/audifono4.jpg", "fotocomponente5" : "/static/lek/img/componentes/audifono5.jpg"}
     return render (request, 'lek/componentes.html',contexto )
 
+def componenteM (request):
+    contexto = {"nombreM" :"Monitor","nombreM1":"LG 24" , "nombreM2":"Philips 24", "nombreM3": "Monitor Asus","nombreM4" :"Samsung Odyssey","nombreM5": "BenQ PD",
+                  "fotocomponenteM1" : "/static/lek/img/componentes/monitor1.jpg","fotocomponenteM2" : "/static/lek/img/componentes/monitor2.jpg" , "fotocomponenteM3" : "/static/lek/img/componentes/monitor3.jpg",
+                  "fotocomponenteM4" : "/static/lek/img/componentes/monitor4.jpg", "fotocomponenteM5" : "/static/lek/img/componentes/monitor5.jpg"}
+    return render (request, 'lek/componenteM.html',contexto )
+
 def nosotros (request):
     return render (request, 'lek/nosotros.html')
 
@@ -51,6 +57,23 @@ def audifono4 (request):
 
 def audifono5 (request):
     return render (request, 'lek/audifonos/audifono5.html')
+
+def monitor1 (request):
+    return render (request, 'lek/monitores/monitor1.html')
+    
+def monitor2 (request):
+    return render (request, 'lek/monitores/monitor2.html')
+
+
+def monitor3 (request):
+    return render (request, 'lek/monitores/monitor3.html')
+
+
+def monitor4 (request):
+    return render (request, 'lek/monitores/monitor4.html')
+    
+def monitor5 (request):
+    return render (request, 'lek/monitores/monitor5.html')
 
 # REGISTRO #
 def registro(request):
