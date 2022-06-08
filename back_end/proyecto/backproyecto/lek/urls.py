@@ -14,4 +14,5 @@ urlpatterns = [
     path('audifono3/',audifono3, name='audifono3'),
     path('audifono4/',audifono4, name='audifono4'),
     path('audifono5/',audifono5, name='audifono5'),
+    
 ]
