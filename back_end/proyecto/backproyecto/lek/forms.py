@@ -19,11 +19,10 @@ class CustomUserCreation(UserCreationForm):
         fields = ['username','first_name','last_name','email','password1','password2']
 
 
-# class AgregarProductoForm (forms.ModelForm):
-
-#     class meta:
-#         model = AgregarProducto
-#         fields = '__all__'
+class AddProductoForm (forms.ModelForm):
+    class meta:
+        model = AgregarProducto
+        fields = '__all__'
 #         Widgets = {
-#                 "fecha_pelicula": forms.SelectDateWidget()
+#                 "fecha_producto": forms.SelectDateWidget()
 #         }

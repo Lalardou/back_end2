@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import AgregarProducto
-from .forms import  CustomUserCreation, ContactosForm
-from django.shortcuts import render, redirect
+from .forms import  CustomUserCreation, ContactosForm, AddProductoForm
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -93,16 +93,49 @@ def registro(request):
 
 
 # AGREGAR #
-# @permission_required('lek.add_producto')
-# def agregar_producto(request):
-#     data = {
-#         'form': ProductoForm()
-#     }
-#     if request.method == 'POST':
-#         formulario = ProductoForm(data=request.POST, files=request.FILES)
-#         if formulario.is_valid():
-#             formulario.save()
-#             messages.success(request, "Producto Agregado")
-#         else:
-#             data["form"] = formulario
-#     return render(request, 'lek/producto/agregar.html', data)
+@permission_required('lek.add_productos')
+def add_productos(request):
+    data = {
+        'form': AddProductoForm()
+    }
+    
+    if request.method == 'POST':
+        formulario = AddProductoForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Producto Agregado")
+        else:
+            data["form"] = formulario
+    return render(request, 'lek/producto/agregar.html', data)  
+
+def listar_productos(request):
+    productos = AgregarProducto.objects.all()
+
+    data = {
+        'productos': productos
+    }
+
+    return render (request, 'lek/producto/listar.html',data)
+
+# MODIFICAR #
+@permission_required('lek.change_producto')
+def modificar_productos(request, id):
+    producto = get_object_or_404(AgregarProducto, id=id)
+    data = { 
+        'form': AddProductoForm(instance=producto)
+    }
+    if request.method == 'POST':
+        formulario = AddProductoForm(data=request.POST, instance=producto, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Modificacion Exitosa")
+            return redirect(to="listar_productos")
+        data["form"] = formulario   
+    return render(request, 'lek/producto/modificar.html',data)
+
+# ELIMINAR PELICULA #
+@permission_required('lek.delete_producto')
+def eliminar_productos(request, id):
+    producto = get_object_or_404(AgregarProducto, id=id)
+    producto.delete()
+    return redirect(to="listar_productos")

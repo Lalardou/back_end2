@@ -1,10 +1,10 @@
 from django.urls import path
 from .views import menu, componentes, contactos, monitor1, nosotros,registro, login, carrito,audifono1,audifono2,audifono3, audifono4, audifono5
-from .views import monitor1,monitor2,monitor3,monitor4,monitor5,componenteM
+from .views import monitor1,monitor2,monitor3,monitor4,monitor5,componenteM, add_productos, listar_productos, modificar_productos, eliminar_productos
 
 urlpatterns = [
     path('',menu,name='menu'),
-    path('componentes',componentes,name='componentes'),
+    path('componentes/',componentes,name='componentes'),
     path('contactos/',contactos,name='contactos'),
     path('nosotros/',nosotros,name='nosotros'),
     path('registro/',registro,name='registro'),
@@ -21,4 +21,10 @@ urlpatterns = [
     path('monitor4/',monitor4, name='monitor4'),
     path('monitor5/',monitor5, name='monitor5'),
     path('componenteM/',componenteM, name='componenteM'),
+    path('add-productos/',add_productos,name='add_productos'),
+    path('listar-productos/',listar_productos, name='listar_productos'),
+    path('modificar-productos/<id>',modificar_productos, name='modificar_productos'),
+    path('eliminar-productos/<id>',eliminar_productos, name='eliminar_productos'),
+
 ]
+
