@@ -1,0 +1,25 @@
+.footer {
+    background-color: rgb(190, 166, 166);
+}
+
+.footer-derechos {
+    padding: 10px;
+    background-color: #e2dcdc;
+    text-align: center;
+}
+
+.imagen-social {
+    margin: 25px;
+}
+
+.link-social {
+    text-decoration: none;
+}
+
+.btn
+{
+    
+        background-color: rgb(73, 73, 73); 
+        border: none;
+       color:#fff;
+      }
