@@ -133,7 +133,7 @@ def modificar_productos(request, id):
         data["form"] = formulario   
     return render(request, 'lek/producto/modificar.html',data)
 
-# ELIMINAR PELICULA #
+# ELIMINAR #
 @permission_required('lek.delete_producto')
 def eliminar_productos(request, id):
     producto = get_object_or_404(AgregarProducto, id=id)
